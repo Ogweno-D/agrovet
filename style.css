@@ -10,7 +10,7 @@ body{
 .navbar{  
     display: flex;
     align-items: center;
-    padding: 40px;
+    padding:20px;
 }
 nav{
     flex: 1;
