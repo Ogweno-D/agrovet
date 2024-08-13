@@ -19,6 +19,7 @@ nav{
 nav ul{
     display: inline-block;
     list-style-type: none;
+    text-decoration: none;
 }
 nav ul li{
     display: inline-block;
@@ -27,6 +28,7 @@ nav ul li{
     display: inline-block;
     list-style-type: none;
     color: #030303;
+    text-decoration: none;
 }
 nav ul li a{
     display: block;
@@ -38,6 +40,7 @@ nav ul ul li a:hover{
     color: #05fd2e;
 }
 nav ul ul{
+    text-decoration: none;
     position: absolute;
     top: 12px;
     display: none;
@@ -69,8 +72,9 @@ a{
 .container{
      max-width: 1300px;
      margin: auto;
-     padding-left: 25px;
+     /* padding-left: 25px;
      padding-right: 25px;
+      */
 
 }
 .row{

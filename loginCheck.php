@@ -7,6 +7,9 @@ session_start();
     echo $username,$password;
     if($connect)
     {
+        
+
+
        $sql="select * from users where username='$username' and password='$password'";
        $query=mysqli_query($connect,$sql);
        if(mysqli_num_rows($query)==1)

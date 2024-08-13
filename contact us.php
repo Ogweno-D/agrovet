@@ -1,8 +1,7 @@
-<?php include_once "session.php"; ?>
+<?php require_once "session.php"; ?>
 <?php
 use FFI\Exception;
 try {
-    
     $db = new mysqli("localhost","root","","agrovet");
 } catch (Exception $exc) {  
     echo $exc->getTraceAsString();
@@ -16,10 +15,11 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && 
     $subject=$_POST['subject'];
     $message=$_POST['message'];
 
-    $is_insert = $db->query("INSERT INTO `contact us`( `name`, `phone`, `email`, `subject`, `message`) VALUES ('$name',' $phone','$email','$subject','$message')");
+    $is_insert = $db->query("INSERT INTO `contacts`( `name`, `phone`, `email`, `subject`, `message`) VALUES ('$name',' $phone','$email','$subject','$message')");
     
     if($is_insert = true){
         echo "<h2>Your Request is Submited .</h2>";
+        header("Location:index.php");
         exit();
     }
 
@@ -31,7 +31,7 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="device-width, initial-scale=1.0">
-        <title>Account-Mutinda Agrovet</title>
+        <title>Mutinda Agrovet</title>
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css2?
         family=poppins:wght@300;400;500;600;700&display=swap"
@@ -52,7 +52,7 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && 
                         <!--<li><a href="about.html"><i class="#"></i>About</a></li>--->
                         <!--<li><a href="login.html"><i class="#"></i>login</a></li>--->
                         <li><a href="contact us.php"><i class="#"></i>Contact Us</a></li>
-                        <li><a href="logoutCheck.php"><i class="#"></i>log out</a></li>
+                        <li><a href="logoutCheck.php"><i class="#"></i>Log Out</a></li>
                     </ul>
                 </nav>  
                
@@ -175,7 +175,7 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && 
         {
             MenuItems.style.maxHeight = "0px";
         }    
-    }
+    };
 </script>
 
 <!-----------js for toggle Form------>

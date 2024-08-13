@@ -8,6 +8,7 @@ try {
     echo $exc->getTraceAsString();
 
 }
+$is_submit = false;
 if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['county']) && isset($_POST['subcounty']) && isset($_POST['location']) && isset($_POST['farmsize'])){
     
     $name=$_POST['name'];
@@ -17,13 +18,8 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['county']) &&
     $location=$_POST['location'];
     $farmsize=$_POST['farmsize'];
 
-    $is_insert = $db->query("INSERT INTO `soil test`( `name`, `phone`, `county`, `subcounty`, `location`, `farmsize`) VALUES ('$name',' $phone','$county','$subcounty','$location','$farmsize')");
-    
-    if($is_insert = true){
-        echo "<h2>Your Request is Submited .</h2>";
-        exit();
-    }
-
+    $is_insert = $db->query("INSERT INTO `soil_test`( `name`, `phone`, `county`, `subcounty`, `location`, `farmsize`) VALUES ('$name',' $phone','$county','$subcounty','$location','$farmsize')");
+    $is_submit = true;
 }
 
 ?>
@@ -38,6 +34,7 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['county']) &&
         family=poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
         <link rel="Stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
     </head>   
     <body>
         <div class="container">
@@ -47,13 +44,13 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['county']) &&
                 </div>
                 <nav>
                     <ul id="MenuItems">
-                        <li><a href="index.php"><i class="#"></i>Home</a></li>
-                        <li><a href="Compost.php"><i class="#"></i>Compost</a> </li>
-                        <li><a href="Soiltest.php"><i class="#"></i>Soil Test</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="Compost.php">Compost</a> </li>
+                        <li><a href="Soiltest.php">Soil Test</a></li>
                         <!--<li><a href="about.html"><i class="#"></i>About</a></li>--->
                         <!--<li><a href="login.html"><i class="#"></i>login</a></li>-->
-                        <li><a href="contact us.php"><i class="#"></i>Contact Us</a></li>
-                        <li><a href="logoutCheck.php"><i class="#"></i>log out</a></li>
+                        <li><a href="contact us.php">Contact Us</a></li>
+                        <li><a href="logoutCheck.php">Log out</a></li>
                     </ul>
                 </nav>  
                
@@ -63,12 +60,16 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['county']) &&
 
         <!----------account-page------->
       <div class="container">
+        
         <h1>SOIL TESTING FORM</h1>
         <P>The biggest factor in determining the amount of yeild production is the soil nutrient deficiences.<br>
             To eat a healthy food, make soil's health good.</P>
         <div class="contact-box">
             <div class="contact-left">
-        <h3>fill this form to order compost</h3><br>
+        <h3>Fill in this form for soil testing</h3><br>
+        <?php if($is_submit): ?>
+            <p style="color: green;">Order submitted successfully!</p>
+        <?php endif ?>
 
         <form action="soiltest.php" method="POST">
             <div class="input-row" >
@@ -87,14 +88,14 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['county']) &&
                     <input type="text" name="county" placeholder="Nakuru">
                 </div>
                 <div class="input-group">
-                    <label>sub-county</label>
+                    <label>Sub-county</label>
                     <input type="text" name="subcounty" placeholder="Rongai">
                 </div>
             </div>
             <div class="input-row">
                 <div class="input-group">
-                    <label>location</label>
-                    <input type="text" name="location" placeholder="kabarak">
+                    <label>Location</label>
+                    <input type="text" name="location" placeholder="Kabarak">
                 </div>
                 <div class="input-group">
                     <label>Farm-size</label>
@@ -212,6 +213,6 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['county']) &&
     }
 
 </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

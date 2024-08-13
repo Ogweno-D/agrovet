@@ -2,7 +2,7 @@
 use FFI\Exception;
 try {
     
-    $db = new mysqli("localhost","root","","mutindafarmcare");
+    $db = new mysqli("localhost","root","","agrovet");
 } catch (Exception $exc) {  
     echo $exc->getTraceAsString();
 
